@@ -1,18 +1,18 @@
 {% set name = "parallel-numpy-rng" %}
-{% set version = "0.1.2" %}
+{% set version = "0.2.0" %}
 
 package:
   name: {{ name|lower }}
   version: {{ version }}
 
 source:
-  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/parallel-numpy-rng-{{ version }}.tar.gz
-  sha256: 8d7b101820e2def248cd0b6f30f4171886d98f8291c65821c41a7109cef52c36
+  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name | replace('-', '_') }}-{{ version }}.tar.gz
+  sha256: 859f5ad437e4823c3ea769d8c31aec20c4def89a5a948ed0687821086ec11002
 
 build:
   noarch: python
   script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
-  number: 2
+  number: 0
 
 requirements:
   host:
@@ -23,8 +23,8 @@ requirements:
     - pip
   run:
     - python >={{ python_min }}
-    - numpy >=1.17
-    - numba >=0.54.1
+    - numpy >=2
+    - numba
 
 test:
   imports:
