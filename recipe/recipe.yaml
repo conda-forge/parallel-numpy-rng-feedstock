@@ -34,7 +34,9 @@ tests:
       imports:
         - parallel_numpy_rng
       pip_check: true
-      python_version: ${{ python_min }}
+      python_version:
+        - ${{ python_min }}
+        - "*"
 
 about:
   summary: Parallel random number generation that produces the same result, regardless of the number of threads
